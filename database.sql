@@ -1,6 +1,4 @@
-CREATE DATABASE animalcare_hub;
 
-USE animalcare_hub;
 
 
 -- =========================================

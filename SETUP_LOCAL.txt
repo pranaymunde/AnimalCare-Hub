@@ -1,0 +1,15 @@
+ANIMALCARE HUB - LOCAL SETUP
+
+1. Open config.php.
+2. Set ANIMALCARE_DB_PASSWORD in your environment, OR temporarily put your local MySQL password in $password.
+3. Create/import the database using database.sql.
+4. Start MySQL.
+5. From this folder run:
+   C:\xampp\php\php.exe -S localhost:8000
+6. Open:
+   http://localhost:8000/index.php
+
+IMPORTANT:
+- Do NOT upload mysql-data/ to InfinityFree or submit it in the ZIP.
+- Keep database credentials outside the public project when hosting.
+- All Animal INSERT/UPDATE/DELETE/SELECT operations use prepared statements.

@@ -1,0 +1,6 @@
+config.php
+mysql-data/
+venv/
+.env
+*.log
+*.code-workspace

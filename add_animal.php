@@ -1,0 +1,25 @@
+<?php
+require 'config.php';
+$error = trim($_GET['error'] ?? '');
+?>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>AnimalCare Hub - Add Animal</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header class="main-header"><div class="container header-content"><div class="logo-area"><div class="logo-icon">🐾</div><div><h1>AnimalCare Hub</h1><p>Animal Rescue & Care Management System</p></div></div><div class="header-auth"><?php if (isset($_SESSION['user_id'])): ?><div class="top-profile-panel"><div class="top-profile-avatar">👤</div><div class="top-profile-text"><span class="top-profile-name"><?= htmlspecialchars($_SESSION['name'] ?? 'Care Team Member') ?></span><span class="top-profile-role"><?= htmlspecialchars($_SESSION['role'] ?? 'Team Member') ?></span></div></div><div class="top-profile-links"><a href="logout.php" class="top-logout-link">Logout</a></div><?php else: ?><div class="top-profile-panel"><div class="top-profile-avatar">👤</div><div class="top-profile-text"><span class="top-profile-name">Guest</span><span class="top-profile-role">Visitor</span></div></div><div class="top-profile-links"><a href="login.php" class="top-login-link">Login</a><a href="register.php" class="top-register-link">Sign Up</a></div><?php endif; ?></div></div></header>
+<nav class="navbar"><div class="container nav-inner"><ul class="nav-list"><li><a href="index.php">Home</a></li><li><a href="animals.php" class="active">🐾 Animals</a></li><li><a href="veterinarians.php">🩺 Veterinary</a></li><li><a href="treatments.php">🩹 Treatments</a></li><li><a href="vaccinations.php">💉 Vaccinations</a></li><li><a href="adoption.php">🏠 Adoption</a></li><li><a href="search.php">🔍 Search</a></li></ul></div></nav>
+<main><div class="container"><section class="form-page"><div class="form-heading"><span class="page-label">ANIMAL DATABASE</span><h2>Add New Animal</h2><p>Enter the animal information and save it to MySQL.</p></div><?php if ($error): ?><div class="flash error">⚠ <?= htmlspecialchars($error) ?></div><?php endif; ?>
+<form action="save_animal.php" method="POST" class="animal-form">
+<div class="form-section"><h3>Basic Information</h3><div class="form-grid">
+<div class="form-group"><label for="animal_name">Animal Name <span>*</span></label><input id="animal_name" name="animal_name" type="text" required minlength="2" maxlength="100" placeholder="e.g. Bruno"></div>
+<div class="form-group"><label for="animal_type">Animal Type <span>*</span></label><select id="animal_type" name="animal_type" required><option value="">Select type</option><option>Dog</option><option>Cat</option><option>Bird</option><option>Rabbit</option><option>Other</option></select></div>
+<div class="form-group"><label for="breed">Breed</label><input id="breed" name="breed" type="text" maxlength="100" placeholder="e.g. Labrador"></div>
+<div class="form-group"><label for="age">Age <span>*</span></label><input id="age" name="age" type="number" min="0" max="100" required placeholder="Age in years"></div>
+<div class="form-group"><label for="gender">Gender <span>*</span></label><select id="gender" name="gender" required><option value="">Select gender</option><option>Male</option><option>Female</option></select></div>
+<div class="form-group"><label for="category">Category <span>*</span></label><select id="category" name="category" required><option value="">Select category</option><option>Pet</option><option>Rescue</option><option>Shelter</option><option>Zoo/Exotic</option></select></div>
+</div></div>
+<div class="form-section"><h3>Health & Adoption</h3><div class="form-grid">
+<div class="form-group"><label for="rescue_date">Rescue Date</label><input id="rescue_date" name="rescue_date" type="date"></div>
+<div class="form-group"><label for="health_status">Health Status <span>*</span></label><select id="health_status" name="health_status" required><option value="">Select health status</option><option>Healthy</option><option>Under Treatment</option><option>Recovered</option><option>Needs Attention</option><option>Recovering</option></select></div>
+<div class="form-group"><label for="adoption_status">Adoption Status <span>*</span></label><select id="adoption_status" name="adoption_status" required><option>Available</option><option>Pending</option><option>Adopted</option><option>Not Available</option></select></div>
+<div class="form-group full-width"><label for="description">Description</label><textarea id="description" name="description" rows="4" maxlength="1000" placeholder="Short notes about the animal"></textarea></div>
+</div></div><div class="form-actions"><a href="animals.php" class="secondary-btn">Cancel</a><button type="reset" class="secondary-btn">Reset</button><button type="submit" class="primary-btn">✓ Save Animal</button></div>
+</form></section></div></main><footer class="site-footer"><p>© 2026 AnimalCare Hub | DBMS Mini Project</p></footer><script src="script.js"></script></body></html>

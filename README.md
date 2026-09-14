@@ -6,17 +6,13 @@
 
 ## 1. Student Details
 
-**Student Name:** Pranay Jagdish Munde
-
-**Roll Number:** MLU24F116
-
-**Division:** B
-
-**Year:** Third Year
-
-**Course:** Database Management System
-
-**Project Title:** AnimalCare Hub
+**Student Name:** Pranay Jagdish Munde  
+**Roll Number:** MLU24F116  
+**Division:** B  
+**Year:** Third Year  
+**Course:** B.Tech CSE (AIML)  
+**Subject:** Database Management System  
+**Project Title:** AnimalCare Hub  
 
 ---
 
@@ -51,12 +47,13 @@ The project demonstrates:
 - Primary keys
 - Foreign keys
 - Table relationships
-- INNER JOIN
+- INNER JOIN operations
 - Prepared statements
 - Parameter binding
 - SQL injection protection
 - XSS protection using `htmlspecialchars()`
 - Password hashing
+- Session-based authentication
 
 ---
 
@@ -100,7 +97,7 @@ The veterinary module stores:
 - Email
 - Clinic name
 
-The system allows veterinary records to be managed using database operations.
+The system allows veterinary records to be added, viewed, updated, and deleted using database operations.
 
 ---
 
@@ -164,6 +161,23 @@ Passwords are stored using secure password hashing rather than plain text.
 
 ---
 
+### 4.7 Live Dashboard
+
+The homepage provides a live operations dashboard.
+
+It displays the current number of:
+
+- Animals
+- Veterinarians
+- Treatments
+- Vaccinations
+- Adoption requests
+- Pending adoption requests
+
+The dashboard retrieves the latest database counts through a PHP API and automatically refreshes the information every 5 seconds.
+
+---
+
 ## 5. Technology Stack
 
 ### Frontend
@@ -180,10 +194,11 @@ Passwords are stored using secure password hashing rather than plain text.
 
 - MySQL
 
-### Local Server
+### Local Development
 
-- PHP Built-in Development Server
 - XAMPP PHP
+- PHP Built-in Development Server
+- MySQL Server
 
 ### Hosting
 
@@ -193,25 +208,27 @@ Passwords are stored using secure password hashing rather than plain text.
 
 ## 6. System Architecture
 
-The application follows a simple client-server architecture:
+The application follows a simple client-server and database-driven architecture.
 
 ```text
-User
-  |
-  v
-HTML / CSS / JavaScript
-  |
-  v
-PHP Backend
-  |
-  v
-MySQL Database
-  |
-  v
-SQL Result
-  |
-  v
-PHP Processing
-  |
-  v
-Browser Output
+                 User
+                   |
+                   v
+          HTML / CSS / JavaScript
+                   |
+                   v
+             PHP Backend
+                   |
+                   v
+            MySQL Database
+                   |
+            SQL Operations
+                   |
+                   v
+             PHP Processing
+                   |
+                   v
+          HTML / JSON Response
+                   |
+                   v
+                Browser
